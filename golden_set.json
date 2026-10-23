@@ -1,0 +1,27 @@
+[
+  {
+    "pregunta": "How can I run a function, like sending an email notification, after the response has already been returned to the client?",
+    "documento_id_esperado": "background-tasks",
+    "tipo": "semántica (parafraseada, sin el nombre de la clase)"
+  },
+  {
+    "pregunta": "Why is @lru_cache used on the function that returns the Settings object?",
+    "documento_id_esperado": "settings",
+    "tipo": "término técnico exacto (lru_cache)"
+  },
+  {
+    "pregunta": "How do I make an optional query parameter that can't be longer than 50 characters?",
+    "documento_id_esperado": "query-params-str-validations",
+    "tipo": "semántica (parafraseada)"
+  },
+  {
+    "pregunta": "How can the server keep a two-way connection open to send and receive messages with the browser in real time?",
+    "documento_id_esperado": "websockets",
+    "tipo": "semántica (parafraseada, sin decir WebSocket)"
+  },
+  {
+    "pregunta": "What does response_model_exclude_unset=True do?",
+    "documento_id_esperado": "response-model",
+    "tipo": "término técnico exacto (response_model_exclude_unset)"
+  }
+]

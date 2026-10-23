@@ -1,0 +1,49 @@
+
+============================================================================================
+EVALUACIÓN DE RECUPERACIÓN — 5 preguntas, k = 5
+============================================================================================
+
+P1. How can I run a function, like sending an email notification, after the response has already been returned to the client?
+    Esperado: background-tasks   (semántica (parafraseada, sin el nombre de la clase))
+    Vectorial R=1 P=0.40 -> [background-tasks], websockets, [background-tasks], websockets, websockets
+    BM25      R=1 P=0.60 -> [background-tasks], [background-tasks], [background-tasks], response-model, events
+    Híbrido   R=1 P=0.60 -> [background-tasks], [background-tasks], websockets, [background-tasks], websockets
+
+P2. Why is @lru_cache used on the function that returns the Settings object?
+    Esperado: settings   (término técnico exacto (lru_cache))
+    Vectorial R=1 P=1.00 -> [settings], [settings], [settings], [settings], [settings]
+    BM25      R=1 P=1.00 -> [settings], [settings], [settings], [settings], [settings]
+    Híbrido   R=1 P=1.00 -> [settings], [settings], [settings], [settings], [settings]
+
+P3. How do I make an optional query parameter that can't be longer than 50 characters?
+    Esperado: query-params-str-validations   (semántica (parafraseada))
+    Vectorial R=1 P=0.80 -> query-params, [query-params-str-validations], [query-params-str-validations], [query-params-str-validations], [query-params-str-validations]
+    BM25      R=1 P=0.60 -> [query-params-str-validations], [query-params-str-validations], [query-params-str-validations], query-params, events
+    Híbrido   R=1 P=0.80 -> [query-params-str-validations], query-params, [query-params-str-validations], [query-params-str-validations], [query-params-str-validations]
+
+P4. How can the server keep a two-way connection open to send and receive messages with the browser in real time?
+    Esperado: websockets   (semántica (parafraseada, sin decir WebSocket))
+    Vectorial R=1 P=1.00 -> [websockets], [websockets], [websockets], [websockets], [websockets]
+    BM25      R=1 P=0.80 -> [websockets], [websockets], [websockets], background-tasks, [websockets]
+    Híbrido   R=1 P=1.00 -> [websockets], [websockets], [websockets], [websockets], [websockets]
+
+P5. What does response_model_exclude_unset=True do?
+    Esperado: response-model   (término técnico exacto (response_model_exclude_unset))
+    Vectorial R=1 P=1.00 -> [response-model], [response-model], [response-model], [response-model], [response-model]
+    BM25      R=1 P=0.60 -> [response-model], middleware, [response-model], [response-model], events
+    Híbrido   R=1 P=0.80 -> [response-model], [response-model], [response-model], [response-model], middleware
+
+============================================================================================
+TABLA RESUMEN (R = Recall@5, P = Precision@5)
+============================================================================================
+Pregunta  | Vectorial R Vectorial P |      BM25 R      BM25 P |   Híbrido R   Híbrido P 
+----------------------------------------------------------------------------------------
+P1        |        1.00        0.40 |        1.00        0.60 |        1.00        0.60 
+P2        |        1.00        1.00 |        1.00        1.00 |        1.00        1.00 
+P3        |        1.00        0.80 |        1.00        0.60 |        1.00        0.80 
+P4        |        1.00        1.00 |        1.00        0.80 |        1.00        1.00 
+P5        |        1.00        1.00 |        1.00        0.60 |        1.00        0.80 
+----------------------------------------------------------------------------------------
+PROMEDIO  |        1.00        0.84 |        1.00        0.72 |        1.00        0.84 
+
+[doc] = fragmento del documento esperado
