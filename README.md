@@ -9,8 +9,9 @@ Como extra, `ask.py` responde preguntas con **Claude**: usa los fragmentos recup
 ## Arquitectura
 
 ```mermaid
-flowchart LR
+flowchart TB
     subgraph Ingesta["1 · Ingesta (ingest.py)"]
+        direction LR
         A["data/<br/>16 páginas .md de FastAPI<br/>(soporta .pdf y .json)"] --> B["loaders.py<br/>carga + clean_text()"]
         B --> C["Chunking por tokens<br/>tiktoken: ≤600, overlap 80"]
         C --> D["ChunkMetadata (Pydantic)<br/>doc_id, source, page, category,<br/>chunk_id, text, ingested_at"]
@@ -18,6 +19,7 @@ flowchart LR
     end
     E -->|"upsert en lotes de 100<br/>IDs determinísticos<br/>namespace fijo"| P[("Pinecone Serverless<br/>aws / us-east-1<br/>cosine · 384")]
     subgraph Recuperacion["2 · Recuperación (rag_system.py)"]
+        direction LR
         Q["pregunta"] --> V["PineconeVectorStore<br/>(semántica)"]
         Q --> K["BM25Retriever<br/>(léxica)"]
         V --> R["EnsembleRetriever<br/>Reciprocal Rank Fusion"]
