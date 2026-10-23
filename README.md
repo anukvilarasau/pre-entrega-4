@@ -139,7 +139,7 @@ R = Recall@5 (1 si el documento correcto aparece entre los 5). P = Precision@5 (
 
 **Lectura de los resultados:**
 - **Recall perfecto en los tres modos.** Con 16 documentos de temas bien separados, ninguna estrategia "pierde" el documento correcto. El golden set es chico y no alcanza para separar los modos por recall.
-- **Las diferencias aparecen en la precisión.** El híbrido iguala al mejor modo en promedio (0.84, igual que el vectorial) y supera a BM25 solo (0.72). Al combinar los dos rankings, el híbrido nunca queda por debajo del peor de los dos.
+- **Las diferencias aparecen en la precisión.** El híbrido iguala al mejor modo en promedio (0.84, igual que el vectorial) y supera a BM25 solo (0.72). En ninguna de las 5 preguntas el híbrido quedó por debajo del peor de los dos modos que combina.
 - **P1 muestra el aporte de BM25.** El vectorial trae 2 fragmentos de `websockets` ("enviar mensajes") en lugar de `background-tasks`. BM25 encuentra las palabras exactas *email*, *notification* y *response*, y el híbrido sube a 0.60. **Ese es el techo posible**: `background-tasks` tiene solo 3 fragmentos, así que como mucho 3 de 5 pueden ser de ese documento.
 - **En P5, BM25 solo fue peor que el vectorial.** El término `response_model_exclude_unset` está en el documento correcto, pero el tokenizador de BM25 (`\w+`) lo deja como una sola palabra rara. Las otras palabras de la pregunta (*what*, *does*, *true*) aparecen en todos lados y suman fragmentos de otros documentos. El híbrido compensa y queda en 0.80.
 
